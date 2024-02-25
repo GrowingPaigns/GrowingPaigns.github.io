@@ -349,20 +349,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Function to pause videos in project-columns
-            function pauseProjectVideos() {
-                const projectVideos = document.querySelectorAll('.project-columns video');
-                projectVideos.forEach(video => {
-                    video.pause();
-                });
-            }
-
             // Check screen size on window resize
             document.querySelectorAll('.project-columns video').forEach(video => {
                 video.addEventListener('play', function() {
                     setTimeout(() => {
-                        video.pause();
-                    }, 1); // Adjust the delay (in milliseconds) as needed
+                        if (window.innerWidth < 1290) {
+                            video.pause();
+                        }
+                            
+                    }, 10); // Adjust the delay (in milliseconds) as needed
                 });
             });
 
@@ -404,17 +399,6 @@
 
             let clickedLayer = "";
             let lastClickedLayer = "";
-
-
-
-            function disableScrollEvent() {
-                // After a reasonable delay, re-enable the scroll event
-                setTimeout(() => {
-                    enableScrollEvent = true;
-                }, 1200); // Adjust the delay (in milliseconds) as needed
-            }
-
-
 
             // Loop through each project column
             projectColumns.forEach((column, index) => {
