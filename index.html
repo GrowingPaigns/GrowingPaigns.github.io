@@ -349,6 +349,23 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Function to pause videos in project-columns
+            function pauseProjectVideos() {
+                const projectVideos = document.querySelectorAll('.project-columns video');
+                projectVideos.forEach(video => {
+                    video.pause();
+                });
+            }
+
+            // Check screen size on window resize
+            document.querySelectorAll('.project-columns video').forEach(video => {
+                video.addEventListener('play', function() {
+                    setTimeout(() => {
+                        video.pause();
+                    }, 1); // Adjust the delay (in milliseconds) as needed
+                });
+            });
+
             const layers = [
                 document.querySelector(".project-columns:nth-child(1) .layer"),
                 document.querySelector(".project-columns:nth-child(2) .layer"),
