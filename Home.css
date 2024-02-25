@@ -181,7 +181,7 @@ nav .fa {
 .contact-info {
     display: flex;
     padding-top: 50px;
-    left: 10px;
+    left: 7px;
     position: absolute;
     color: rgb(235, 235, 235);
     transform: scale(0.9);
@@ -767,7 +767,8 @@ nav .fa {
 
 
     .contact-info {
-        transform: scale(0.8);
+        transform: scale(0.7);
+        left: -20px;
     }
 
     .column-holder {
