@@ -656,8 +656,9 @@ nav .fa {
 /* ---------------------------- */
 
 
-
-
+.disable-pointer-events {
+    pointer-events: none;
+}
 
 .project-columns::before {
     content: "";

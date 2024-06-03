@@ -153,13 +153,13 @@
                     </p>
 
                     <h1 id="countDownHeader">Counting Down the Days</h1>
+                    
                     <div class="icons" id="countDownIcons">
-
-                        <a href="https://github.com/GrowingPaigns/VR-Illusion-Puzzle-Game"><i class="fab fa-github icon-scale"></i></a>
-
+                        <a href="https://store.steampowered.com/app/2794640/CountDown/"><i class="fab fa-steam-square"></i></a>
                     </div>
+                    
                     <p id="countDownText">
-                        I had an idea for a fun, casual tower-defense game, which I could also use as a testing ground for mechanics I wanted to implement into my roguelite game. Before long, this small project became a highly involved process, and grew into something I plan to develop over the coming year. With only a few tasks left to complete, I expect an early Q2 2024 release for version 0.1.<br><br>
+                        I had an idea for a fun, casual tower-defense game, which I could also use as a testing ground for mechanics I wanted to implement into my roguelite game. Before long, this small project became a highly involved process, and grew into something I plan to develop over the coming year. With only a few tasks left to complete, I expect an early Q2 2024 release for version 0.1.<br><br> It took me almost 7 months to complete a demo for this product while creating all the assets on my own. I deem this version 0.05 (out now on Steam - click the link above!). Version 0.1 is coming along quickly though, I recently finalized an additional game mode for the title.
                     </p>
                     <div class="video-container">
                         <video width="100%" height="420px" controls id="countDownVid">
@@ -478,6 +478,9 @@
                 };
 
                 if (!isProjOpen) {
+                    // Disable pointer events
+                    document.body.classList.add('disable-pointer-events');
+                    
                     // Animate welcomeHeader and welcomeText to slide left and become opaque
                     welcomeHeader.style.transform = "translateX(-100%)";
                     welcomeTitleText.style.transform = "translateX(-100%)";
@@ -496,10 +499,13 @@
                         toggleProjectSections(sectionToToggle[layerName], true);
                         isProjOpen = !isProjOpen;
                         lastClickedLayer = layerName;
+                        document.body.classList.remove('disable-pointer-events');
                     }, 500);
                 } else if (isProjOpen) {
                     if (layerName != lastClickedLayer) {
-
+                        // Disable pointer events
+                        document.body.classList.add('disable-pointer-events');
+                        
                         welcomeDisplayOpen = false;
 
                         toggleProjectSections(sectionToToggle[lastClickedLayer], false);
@@ -508,8 +514,13 @@
                             toggleProjectSections(sectionToToggle[layerName], true);
 
                             lastClickedLayer = layerName;
+                            // Re-enable pointer events
+                            document.body.classList.remove('disable-pointer-events');
                         }, 500);
                     } else if (layerName == lastClickedLayer) {
+                        
+                        // Disable pointer events
+                document.body.classList.add('disable-pointer-events');
                         toggleProjectSections(sectionToToggle[layerName], false);
                         isProjOpen = !isProjOpen;
 
@@ -528,7 +539,7 @@
 
                             fadeInElement(welcomeTitleText, welcomeHeader, welcomeBodyText);
 
-
+                            document.body.classList.remove('disable-pointer-events');
                         }, 500); // Adjust this timeout as needed
                     }
                 }
